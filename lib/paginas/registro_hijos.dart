@@ -14,7 +14,7 @@ class _RegistroHijosState extends State<RegistroHijos> {
 
   Color primaryColor = Color.fromRGBO(115, 198, 182, 72 );
   Color secondaryColor = Color(0xff232c51);
-  Color logoGreen = Color(0xff25bcbb);
+  Color logoGreen = Color(0xff25bcbb);    
 
   @override
   Widget build(BuildContext context) {
@@ -63,15 +63,12 @@ class _RegistroHijosState extends State<RegistroHijos> {
             color: Colors.deepPurple,
           ),
         ),
-
         onChanged: (valor) {
           setState(() {});
         },
       ),
     );
   }
-
-
 
   Widget _crearEmail() {
     return Container(
@@ -85,7 +82,6 @@ class _RegistroHijosState extends State<RegistroHijos> {
           labelText: "Correo",
           prefixIcon: Icon(Icons.email),
         ),
-
         onChanged: (valor) => setState(() {})
       ),
     );

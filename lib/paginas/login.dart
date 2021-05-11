@@ -7,15 +7,13 @@ import 'package:proyectouedadas/paginas/principal.dart';
 
 import 'Inicio.dart';
 
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-  Color primaryColor = Color(0xff18203d);
+  Color primaryColor = Color.fromRGBO(26, 188, 156,1);
   Color secondaryColor = Color(0xff232c51);
   Color logoGreen = Color(0xff25bcbb);
 
@@ -27,45 +25,50 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 40),
-        child: Column(
-          children: <Widget>[
-            Text(
-              'Inicia sesión en \nQuedadas Junior',
-              textAlign: TextAlign.center,
-              style:
-                GoogleFonts.openSans(color: Colors.white, fontSize: 28),
-            ),
-            SizedBox(height: 20),
-            Text(
-                'Enter your email and password below to continue to the The Growing Developer and let the learning begin!',
-                textAlign: TextAlign.center,
-                style:
-                GoogleFonts.openSans(color: Colors.white, fontSize: 14),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            emailTextField('Email', Icons.account_circle),
-            SizedBox(height: 20),
-            contraTextField('Contraseña', Icons.lock),
-            SizedBox(height: 30),
-              MaterialButton(
-                elevation: 0,
-                minWidth: double.maxFinite,
-                height: 50,
-                onPressed: () async {
-                  User firebaseUser;
-                  firebaseAuth.signInWithEmailAndPassword(email: 'demo@gmail.com', password: '123456').then((UserCredential){});
-                  setState((){
-                    firebaseUser =UserCredential as User;
-                  });
-                  print(firebaseUser.email);
-                },
-                color: logoGreen,
-                child: Text('Login',
-                  style: TextStyle(color: Colors.white, fontSize: 16)),
+      body: ListView(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 40),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'Inicia sesión en \nQuedadas Junior',
+                  textAlign: TextAlign.center,
+                  style:
+                      GoogleFonts.openSans(color: Colors.white, fontSize: 28),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  '',
+                  textAlign: TextAlign.center,
+                  style:
+                      GoogleFonts.openSans(color: Colors.white, fontSize: 14),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                emailTextField('Email', Icons.account_circle),
+                SizedBox(height: 20),
+                contraTextField('Contraseña', Icons.lock),
+                SizedBox(height: 50),
+                MaterialButton(
+                  elevation: 0,
+                  minWidth: double.maxFinite,
+                  height: 50,
+                  onPressed: () async {
+                    User firebaseUser;
+                    firebaseAuth
+                        .signInWithEmailAndPassword(
+                            email: 'demo@gmail.com', password: '123456')
+                        .then((UserCredential) {});
+                    setState(() {
+                      firebaseUser = UserCredential as User;
+                    });
+                    print(firebaseUser.email);
+                  },
+                  color: Color.fromRGBO(14, 102, 85, 1),
+                  child: Text('Login',
+                      style: TextStyle(color: Colors.white, fontSize: 16)),
                   textColor: Colors.white,
                 ),
                 SizedBox(height: 20),
@@ -76,81 +79,87 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () async {
                     final GoogleSignInAccount googleUser = await googleSignIn.signIn();
                     final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-                    final AuthCredential credential = GoogleAuthProvider.credential(idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
-                    final User user = (await firebaseAuth.signInWithCredential(credential)).user;
+                    final AuthCredential credential = GoogleAuthProvider.credential(
+                      idToken: googleAuth.idToken,
+                      accessToken: googleAuth.accessToken);
+                    final User user =(await firebaseAuth.signInWithCredential(credential)).user;
 
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => Menu_Principal()));
-
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => Menu_Principal()));
                   },
-                  color: Colors.blue,
+                  color: Color.fromRGBO(31, 97, 141, 1),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(FontAwesomeIcons.google),
                       SizedBox(width: 10),
                       Text('Inicia sesión con Google',
-                        style: TextStyle(color: Colors.white, fontSize: 16)
-                      ),
-                ],
+                          style: TextStyle(color: Colors.white, fontSize: 16)),
+                    ],
+                  ),
+                  textColor: Colors.white,
+                ),
+                SizedBox(height: 20),
+                MaterialButton(
+                  elevation: 0,
+                  minWidth: double.maxFinite,
+                  height: 50,
+                  onPressed: () async {},
+                  color: Colors.deepOrange,
+                  child: Text('Registrarse',
+                      style: TextStyle(color: Colors.white, fontSize: 16)),
+                  textColor: Colors.white,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  emailTextField(String labelText, IconData icon) {
+    return Container(
+      decoration: BoxDecoration(
+          color: secondaryColor,
+          border: Border.all(
+            color: Colors.blue,
+          )),
+      child: TextField(
+          obscureText: false,
+          decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(horizontal: 10),
+              labelText: labelText,
+              labelStyle: TextStyle(color: Colors.white),
+              focusColor: secondaryColor,
+              icon: Icon(
+                icon,
+                color: Colors.white,
               ),
-              textColor: Colors.white,
-            ),
-            SizedBox(height: 100),
-          ],
-        ),
-      ),
+              // prefix: Icon(icon),
+              border: InputBorder.none)),
     );
   }
 
-  emailTextField(String labelText, IconData icon){
+  contraTextField(String labelText, IconData icon) {
     return Container(
       decoration: BoxDecoration(
-        color: secondaryColor,
-        border:  Border.all(
-          color: Colors.blue,
-        )
-      ),
+          color: secondaryColor,
+          border: Border.all(
+            color: Colors.blue,
+          )),
       child: TextField(
-        obscureText: false,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 10),
-          labelText: labelText,
-          labelStyle: TextStyle(color: Colors.white),
-          focusColor: secondaryColor,
-          icon: Icon(
-            icon,
-              color: Colors.white,
-            ),
-            // prefix: Icon(icon),
-          border: InputBorder.none
-        )
-      ),
-    );
-  }
-
-  contraTextField(String labelText, IconData icon){
-    return Container(
-      decoration: BoxDecoration(
-        color: secondaryColor,
-        border: Border.all(
-          color: Colors.blue,
-        
-        )
-      ),
-      child: TextField(
-        obscureText: true,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 10),
-          labelText: labelText,
-          labelStyle: TextStyle(color: Colors.white),
-          icon: Icon(
-            icon,
-              color: Colors.white,
-            ),
-            // prefix: Icon(icon),
-          border: InputBorder.none
-        )
-      ),
+          obscureText: true,
+          decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(horizontal: 10),
+              labelText: labelText,
+              labelStyle: TextStyle(color: Colors.white),
+              icon: Icon(
+                icon,
+                color: Colors.white,
+              ),
+              // prefix: Icon(icon),
+              border: InputBorder.none)),
     );
   }
 }
