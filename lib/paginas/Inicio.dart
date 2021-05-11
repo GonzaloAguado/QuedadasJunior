@@ -9,8 +9,8 @@ final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class Inicio extends StatelessWidget {
   //const LogIn({Key key}) : super(key: key);
-  Color primaryColor = Color(0xff18203d);
-  Color logoGreen = Color(0xff25bcbb);
+  Color primaryColor = Color.fromRGBO(2, 66, 26, 1);
+  Color logoGreen = Color.fromRGBO(39, 174, 96 , 1);
 
   @override
   Widget build(BuildContext context) {

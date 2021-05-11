@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:proyectouedadas/paginas/principal.dart';
-
 import 'Inicio.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,9 +12,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  Color primaryColor = Color.fromRGBO(26, 188, 156,1);
-  Color secondaryColor = Color(0xff232c51);
+  Color primaryColor = (Color.fromRGBO(2, 66, 26,1));
+  Color secondaryColor = Color.fromRGBO(39, 174, 96 , 1);
   Color logoGreen = Color(0xff25bcbb);
+  Color loginInterno = Color.fromRGBO(27, 30, 28, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -57,16 +57,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 50,
                   onPressed: () async {
                     User firebaseUser;
-                    firebaseAuth
-                        .signInWithEmailAndPassword(
-                            email: 'demo@gmail.com', password: '123456')
-                        .then((UserCredential) {});
+                    firebaseAuth.signInWithEmailAndPassword(
+                      email: 'demo@gmail.com', password: '123456').then((UserCredential) {});
+                    
                     setState(() {
                       firebaseUser = UserCredential as User;
                     });
                     print(firebaseUser.email);
                   },
-                  color: Color.fromRGBO(14, 102, 85, 1),
+                  color: secondaryColor,
                   child: Text('Login',
                       style: TextStyle(color: Colors.white, fontSize: 16)),
                   textColor: Colors.white,
@@ -87,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => Menu_Principal()));
                   },
-                  color: Color.fromRGBO(31, 97, 141, 1),
+                  color: Color.fromRGBO(49, 134, 207, 1),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -121,9 +120,9 @@ class _LoginScreenState extends State<LoginScreen> {
   emailTextField(String labelText, IconData icon) {
     return Container(
       decoration: BoxDecoration(
-          color: secondaryColor,
+          color: primaryColor,
           border: Border.all(
-            color: Colors.blue,
+            color: loginInterno,
           )),
       child: TextField(
           obscureText: false,
@@ -131,10 +130,10 @@ class _LoginScreenState extends State<LoginScreen> {
               contentPadding: EdgeInsets.symmetric(horizontal: 10),
               labelText: labelText,
               labelStyle: TextStyle(color: Colors.white),
-              focusColor: secondaryColor,
+              focusColor: Color.fromRGBO(26, 188, 156, 1),
               icon: Icon(
                 icon,
-                color: Colors.white,
+                color: secondaryColor,
               ),
               // prefix: Icon(icon),
               border: InputBorder.none)),
@@ -144,9 +143,9 @@ class _LoginScreenState extends State<LoginScreen> {
   contraTextField(String labelText, IconData icon) {
     return Container(
       decoration: BoxDecoration(
-          color: secondaryColor,
+          color: primaryColor,
           border: Border.all(
-            color: Colors.blue,
+            color: loginInterno,
           )),
       child: TextField(
           obscureText: true,
@@ -156,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
               labelStyle: TextStyle(color: Colors.white),
               icon: Icon(
                 icon,
-                color: Colors.white,
+                color: secondaryColor,
               ),
               // prefix: Icon(icon),
               border: InputBorder.none)),
