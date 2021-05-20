@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:proyectouedadas/Colores/widget_drawer.dart';
 import 'package:proyectouedadas/paginas/login.dart';
+import 'package:proyectouedadas/paginas/registro_hijos.dart';
 
 
 class Menu_Principal extends StatefulWidget {
@@ -15,15 +16,18 @@ class Menu_Principal extends StatefulWidget {
 
 class _Menu_PrincipalState extends State<Menu_Principal> {
 
-  Color primaryColor = Color(0xff18203d);
-  Color secondaryColor = Color(0xff232c51);
+  // Colores para la pagina
+  Color secondaryColor = (Color.fromRGBO(2, 66, 26,1));
+  Color fondo2 = (Color.fromRGBO(192, 255, 186, 1));
+  Color primaryColor = Color.fromRGBO(39, 174, 96 , 1);
   Color logoGreen = Color(0xff25bcbb);
+  Color loginInterno = Color.fromRGBO(27, 30, 28, 1);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: primaryColor,
+        backgroundColor: fondo2,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -34,6 +38,12 @@ class _Menu_PrincipalState extends State<Menu_Principal> {
           children: [
             buildFloatingSearchBar(context),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.group_add_outlined),
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (_) => RegistroHijos()));
+          },
         ),
       )
     );

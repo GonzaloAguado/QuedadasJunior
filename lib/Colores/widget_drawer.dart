@@ -8,7 +8,7 @@ import 'package:proyectouedadas/paginas/registro_hijos.dart';
 
 class menu_lateral extends StatelessWidget {
 
-  Color secondaryColor = Color(0xff232c51);
+  Color secondaryColor = Color.fromRGBO(2, 66, 26, 1);
 
   @override
   Widget build(BuildContext context) {
