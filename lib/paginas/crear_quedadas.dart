@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proyectouedadas/Colores/widget_drawer.dart';
 
-class RegistroHijos extends StatefulWidget {
-  RegistroHijos({Key key}) : super(key: key);
+
+class Crear_Quedadas extends StatefulWidget {
   @override
-  _RegistroHijosState createState() => _RegistroHijosState();
+  _Crear_QuedadasState createState() => _Crear_QuedadasState();
 }
 
-class _RegistroHijosState extends State<RegistroHijos> {
+class _Crear_QuedadasState extends State<Crear_Quedadas> {
   // Colores
   Color fondo2 = (Color.fromRGBO(192, 255, 186, 1));
   Color verdePOtentorro = Color.fromRGBO(2, 66, 26, 1);
@@ -58,7 +58,7 @@ class _RegistroHijosState extends State<RegistroHijos> {
                 children: <Widget>[
                   SizedBox(height: 5),
                   Text(
-                    'Añade a tus hijos/as \npara continuar',
+                    'Quedada',
                     textAlign: TextAlign.center,
                     style:
                         GoogleFonts.openSans(color: Colors.white, fontSize: 25),
@@ -69,22 +69,15 @@ class _RegistroHijosState extends State<RegistroHijos> {
             ),
           ),
             SizedBox(height: 55),
-            _crearInput(),  // Input de nombre
-            SizedBox(height: 35),
             _crearFecha(context), // Input de fecha
             SizedBox(height: 25),
-            _crearChB(),
-            _crearChB2(),
+            _crearSwitch(),
             SizedBox(height: 45),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              margin: EdgeInsets.symmetric(horizontal: 110),
               child: Row(
                 children: [
                   _crearDropdown(),  // Primer Dropdown
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 18),
-                    child: _crearDropdown2()
-                  )  // Segundo Dropdown
                 ],
               ),
             ),
@@ -95,7 +88,6 @@ class _RegistroHijosState extends State<RegistroHijos> {
       ),
     );
   }
-  
   Widget _crearInput() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 25.0),
@@ -191,7 +183,7 @@ class _RegistroHijosState extends State<RegistroHijos> {
     DateTime piqueado = await showDatePicker(
       context: context,
       initialDate:  new DateTime.now(),
-      firstDate: new DateTime(2008),
+      firstDate: new DateTime(2021),
       lastDate: new DateTime(2025),
       locale: Locale("es","ES")
     );
@@ -214,8 +206,8 @@ class _RegistroHijosState extends State<RegistroHijos> {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          hintText: "Fecha de nacimiento",
-          labelText: "Fecha de nacimiento",
+          hintText: "Fecha de la Quedada",
+          labelText: "Fecha de la Quedada",
           suffixIcon: Icon(Icons.add_circle_outline,
           color: verdePOtentorro),
           prefixIcon: Icon(Icons.calendar_today_outlined,
@@ -244,32 +236,20 @@ class _RegistroHijosState extends State<RegistroHijos> {
           borderRadius: BorderRadius.circular(20.0),
           // side: BorderSide(color: Colors.red)
         ),
-        child: Text('Añadir Hijo/a',
+        child: Text('Crear Quedada',
             style: TextStyle(color: Colors.white, fontSize: 16)),
             textColor: Colors.white,
       ),
     );
   }
 
-  Widget _crearChB() {
-    return CheckboxListTile(
-      title: Text("Chico"),
+  Widget _crearSwitch() {
+    return  SwitchListTile(
+      title: Text("Merienda"),
       value: _bcheck, 
       onChanged: (valor) {
         setState(() {
           _bcheck = valor;
-        });   
-      },
-    );
-  }
-
-  Widget _crearChB2() {
-    return CheckboxListTile(
-      title: Text("Chica"),
-      value: _bcheck2, 
-      onChanged: (valor) {
-        setState(() {
-          _bcheck2 = valor;
         });   
       },
     );

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:proyectouedadas/paginas/crear_quedadas.dart';
 import 'package:proyectouedadas/paginas/login.dart';
 import 'package:proyectouedadas/paginas/principal.dart';
 import 'package:proyectouedadas/paginas/registro_hijos.dart';
@@ -23,7 +24,7 @@ class menu_lateral extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  child: Image.asset('assets/portada.png'),
+                  child: Image.asset('assets/logo.PNG'),
                 ),
                 SizedBox(
                   height: 10.0,
@@ -50,8 +51,10 @@ class menu_lateral extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.person_pin_circle_sharp),
             title: Text("Crear Quedadas"),
-            onTap: (){},
-            enabled: false
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (_) => Crear_Quedadas()));
+            },
+            enabled: true
           ),
           Divider(),
           ListTile(
