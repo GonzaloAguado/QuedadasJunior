@@ -35,7 +35,7 @@ class _RegistroHijosState extends State<RegistroHijos> {
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        drawer: menu_lateral(),
+        drawer: Menu_lateral(),
         body: ListView(
           padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
           children: <Widget>[

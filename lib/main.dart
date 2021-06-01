@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:proyectouedadas/paginas/Inicio.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
+import 'package:proyectouedadas/rutas/rutas.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,8 +13,7 @@ void main() async {
   });
 }
 
-class MyApp extends StatelessWidget {
-
+class MyApp extends StatelessWidget { 
   Color verdePOtentorro = Color.fromRGBO(2, 66, 26, 1);
 
   @override

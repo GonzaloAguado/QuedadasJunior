@@ -32,7 +32,7 @@ class _Menu_PrincipalState extends State<Menu_Principal> {
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        drawer: menu_lateral(),
+        drawer: Menu_lateral(),
         body: Stack(
           fit: StackFit.expand,
           children: [

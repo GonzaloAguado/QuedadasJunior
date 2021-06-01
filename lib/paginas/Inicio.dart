@@ -15,6 +15,7 @@ class Inicio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: primaryColor,
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 40),
@@ -53,6 +54,10 @@ class Inicio extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (_) => LoginScreen()));
               },
               color: logoGreen,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                // side: BorderSide(color: Colors.red)
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

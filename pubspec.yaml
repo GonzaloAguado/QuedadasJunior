@@ -22,6 +22,8 @@ dependencies:
   font_awesome_flutter:
   cupertino_icons: ^1.0.2
   material_floating_search_bar:
+  get:
+  flutter_signin_button:
 
 
 

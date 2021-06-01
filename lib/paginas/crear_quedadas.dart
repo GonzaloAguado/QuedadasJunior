@@ -17,7 +17,6 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
   Color loginInterno = Color.fromRGBO(27, 30, 28, 1);
   String _fecha = "";
   bool _bcheck = false;
-  bool _bcheck2 = false;
   // Opcion ya seleccionada
   String _opSelecc = "Futbol";
   String _opSelecc2 = "Canicas";
@@ -35,7 +34,7 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        drawer: menu_lateral(),
+        drawer: Menu_lateral(),
         body: ListView(
           padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
           children: <Widget>[
@@ -88,6 +87,7 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
       ),
     );
   }
+
   Widget _crearInput() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 25.0),
@@ -243,6 +243,7 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
     );
   }
 
+  
   Widget _crearSwitch() {
     return  SwitchListTile(
       title: Text("Merienda"),
