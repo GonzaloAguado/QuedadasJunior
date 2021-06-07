@@ -1,9 +1,15 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:proyectouedadas/Colores/widget_drawer.dart';
+import 'package:proyectouedadas/General/widget_drawer.dart';
+import 'package:proyectouedadas/objetos/Hijos.dart';
+import 'package:proyectouedadas/paginas/registro.dart';
 
 class RegistroHijos extends StatefulWidget {
-  RegistroHijos({Key key}) : super(key: key);
+  // RegistroHijos({Key key}) : super(key: key);
+  final Hijo hijo;
+  RegistroHijos(this.hijo);
+
   @override
   _RegistroHijosState createState() => _RegistroHijosState();
 }
@@ -15,16 +21,50 @@ class _RegistroHijosState extends State<RegistroHijos> {
   Color primaryColor = Color.fromRGBO(39, 174, 96 , 1);
   Color logoGreen = Color(0xff25bcbb);
   Color loginInterno = Color.fromRGBO(27, 30, 28, 1);
+
   String _fecha = "";
   bool _bcheck = false;
   bool _bcheck2 = false;
+
   // Opcion ya seleccionada
   String _opSelecc = "Futbol";
   String _opSelecc2 = "Canicas";
+
   // Listas de seleccion para los dropdowns
   List <String> _gustos = ["Futbol","Ping Pong","Correr","VoleyBall","Pilla Pilla","Escondite"];
   List <String> _hobbie = ["Canicas","Bakugan","Manga","Deporte"];
+  
+  // Controladores  de texto
+  List<Hijo> items;
+  TextEditingController _nombrePadre;
+  TextEditingController _nombreHijo;
+  TextEditingController _fechaN;
+  TextEditingController _genero;
+  TextEditingController _gusto;
+  TextEditingController _hobbies;
   TextEditingController _controlador = new TextEditingController();
+
+  @override
+  void initState() { 
+    _nombrePadre = TextEditingController(text: widget.hijo.nombrePadre);
+    _nombreHijo = TextEditingController(text: widget.hijo.nombreHijo);
+    _fechaN = TextEditingController(text: widget.hijo.nombrePadre.toString());
+    _genero = TextEditingController(text: widget.hijo.genero);
+    _gusto = TextEditingController(text: widget.hijo.gusto);
+    _hobbies = TextEditingController(text: widget.hijo.hobbie);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _nombrePadre.dispose();
+    _nombreHijo.dispose();
+    _fechaN.dispose();
+    _genero.dispose();
+    _gusto.dispose();
+    _hobbies.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -274,4 +314,5 @@ class _RegistroHijosState extends State<RegistroHijos> {
       },
     );
   }
+
 }

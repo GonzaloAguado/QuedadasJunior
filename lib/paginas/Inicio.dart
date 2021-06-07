@@ -8,6 +8,7 @@ final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class Inicio extends StatelessWidget {
+  
   //const LogIn({Key key}) : super(key: key);
   Color primaryColor = Color.fromRGBO(2, 66, 26, 1);
   Color logoGreen = Color.fromRGBO(39, 174, 96 , 1);

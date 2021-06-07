@@ -15,7 +15,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
     
-  cloud_firestore: ^1.0.6
+  cloud_firestore: 
+  firebase_database:
   firebase_auth:
   google_sign_in:
   google_fonts:
@@ -24,6 +25,7 @@ dependencies:
   material_floating_search_bar:
   get:
   flutter_signin_button:
+  google_maps_flutter:
 
 
 

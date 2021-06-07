@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:proyectouedadas/paginas/login.dart';
 import 'package:proyectouedadas/paginas/principal.dart';
 import 'package:proyectouedadas/paginas/registro.dart';
 
@@ -39,7 +40,7 @@ class LoginController extends GetxController {
     await _auth.signOut();
   }
 
-  void signOut() async {
+  void signOut(context) async {
     final User user = await _auth.currentUser;
     if (user == null) {
       Get.snackbar('Out', 'No one has signed in.',
@@ -50,7 +51,7 @@ class LoginController extends GetxController {
     final String uid = user.uid;
     Get.snackbar('Out', uid + ' has successfully signed out.',
         snackPosition: SnackPosition.BOTTOM);
-    Get.toNamed("/home");
+    Navigator.push(context, MaterialPageRoute(builder: (_) => LoginScreen()));
   }
 
   //Example code of how to sign in with Google.

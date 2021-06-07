@@ -3,6 +3,8 @@
    <application
         android:label="proyectouedadas"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyAx2CHyoC00T9msNDpEHY7L3KmsjVbYCsE"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

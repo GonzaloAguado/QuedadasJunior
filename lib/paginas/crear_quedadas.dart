@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:proyectouedadas/Colores/widget_drawer.dart';
+import 'package:proyectouedadas/General/widget_drawer.dart';
 
 
 class Crear_Quedadas extends StatefulWidget {

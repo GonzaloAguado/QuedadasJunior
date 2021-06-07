@@ -1,7 +1,9 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:proyectouedadas/Colores/widget_drawer.dart';
+import 'package:proyectouedadas/General/widget_drawer.dart';
+import 'package:proyectouedadas/objetos/Hijos.dart';
 import 'package:proyectouedadas/paginas/login.dart';
 import 'package:proyectouedadas/paginas/registro_hijos.dart';
 
@@ -15,6 +17,18 @@ class Menu_Principal extends StatefulWidget {
 }
 
 class _Menu_PrincipalState extends State<Menu_Principal> {
+
+  final hijoreferencia = FirebaseDatabase.instance.reference().child('hijo');
+
+  @override
+  void initState() { 
+    super.initState();
+  }
+
+  @override
+  void dispose() { 
+    super.dispose();
+  }
 
   // Colores para la pagina
   Color secondaryColor = (Color.fromRGBO(2, 66, 26,1));
@@ -42,7 +56,8 @@ class _Menu_PrincipalState extends State<Menu_Principal> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.group_add_outlined),
           onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (_) => RegistroHijos()));
+            // Navigator.push(context, MaterialPageRoute(builder: (_) => RegistroHijos()));
+            _crearNuevoHijo(context);
           },
         ),
       )
@@ -166,6 +181,14 @@ class _Menu_PrincipalState extends State<Menu_Principal> {
         borderRadius: BorderRadius.circular(30.0),
         child: card,
       ),
+    );
+  }
+
+  void _crearNuevoHijo(BuildContext context) async{
+    await Navigator.push(context, 
+      MaterialPageRoute(builder:
+        (context) => RegistroHijos(Hijo('', '', '', '', '', '')),
+      )
     );
   }
 }
