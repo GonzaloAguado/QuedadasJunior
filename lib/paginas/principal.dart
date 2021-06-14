@@ -41,10 +41,9 @@ class _Menu_PrincipalState extends State<Menu_Principal> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: fondo2,
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
+          title: Text("Busqueda"),
         ),
         drawer: Menu_lateral(),
         body: Stack(

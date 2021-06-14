@@ -36,7 +36,7 @@ class _RegistroState extends State<Registro> {
                 child: Padding(
                   padding: const EdgeInsets.all(26.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Text(
                         'Regístrate en \nQuedadas Junior',

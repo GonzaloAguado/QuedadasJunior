@@ -70,10 +70,11 @@ class _RegistroHijosState extends State<RegistroHijos> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: fondo2,
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: verdePOtentorro,
           elevation: 0,
+          //title: Text('Añade a tus hijos/as'),
         ),
         drawer: Menu_lateral(),
         body: ListView(
@@ -293,7 +294,7 @@ class _RegistroHijosState extends State<RegistroHijos> {
 
   Widget _crearChB() {
     return CheckboxListTile(
-      title: Text("Chico"),
+      title: Text("Niño"),
       value: _bcheck, 
       onChanged: (valor) {
         setState(() {
@@ -305,7 +306,7 @@ class _RegistroHijosState extends State<RegistroHijos> {
 
   Widget _crearChB2() {
     return CheckboxListTile(
-      title: Text("Chica"),
+      title: Text("Niña"),
       value: _bcheck2, 
       onChanged: (valor) {
         setState(() {

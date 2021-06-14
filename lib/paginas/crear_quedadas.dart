@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:proyectouedadas/General/widget_drawer.dart';
+
+import 'google_map.dart';
 
 
 class Crear_Quedadas extends StatefulWidget {
+  
+  final LatLng fromPoint = LatLng(40.2839, -3.80033);
+  final LatLng toPoint = LatLng(40.2839, -3.80033);
+
   @override
   _Crear_QuedadasState createState() => _Crear_QuedadasState();
 }
@@ -29,68 +37,97 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: fondo2,
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: verdePOtentorro,
           elevation: 0,
         ),
         drawer: Menu_lateral(),
         body: ListView(
           padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
           children: <Widget>[
-            Container(
-            margin: EdgeInsets.symmetric(horizontal: 40),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                color: verdePOtentorro,
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 10.0,
-                      spreadRadius: 2.0,
-                      offset: Offset(2.0,10.0)
-                  )
-                ]
-              ),
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 5),
-                  Text(
-                    'Quedada',
-                    textAlign: TextAlign.center,
-                    style:
-                        GoogleFonts.openSans(color: Colors.white, fontSize: 25),
-                  ),
-                  SizedBox(height: 10),
+          SizedBox(height: 25),
+          Container(
+          margin: EdgeInsets.symmetric(horizontal: 40),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.0),
+              color: verdePOtentorro,
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 10.0,
+                    spreadRadius: 2.0,
+                    offset: Offset(2.0,10.0)
+                )
+              ]
+            ),
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 5),
+                Text(
+                  'Quedada',
+                  textAlign: TextAlign.center,
+                  style:
+                    GoogleFonts.openSans(color: Colors.white, fontSize: 25),
+                ),
+                SizedBox(height: 10),
                 ],
               ),
             ),
           ),
-            SizedBox(height: 55),
-            _crearFecha(context), // Input de fecha
-            SizedBox(height: 25),
-            _crearSwitch(),
-            SizedBox(height: 45),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 110),
+          SizedBox(height: 55),
+          _crearFecha(context),
+          SizedBox(height: 25),
+          _crearHoras(), 
+          SizedBox(height: 25),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 128.0),
+            child: MaterialButton(
+              elevation: 0,
+              minWidth: double.maxFinite,
+              height: 50,
+              onPressed: () async {
+                Navigator.push(context, MaterialPageRoute(builder: (_) => Mapa_Page()));           
+              },
+              color: Colors.deepOrange,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50.0),
+              ),
               child: Row(
-                children: [
-                  _crearDropdown(),  // Primer Dropdown
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(FontAwesomeIcons.mapMarkerAlt),
+                  SizedBox(width: 10),
+                  Text('Maps',
+                    style: TextStyle(color: Colors.white, fontSize: 16)),
                 ],
               ),
+              textColor: Colors.white,
             ),
-            SizedBox(height: 75),
-            _botonSalida(context) // Boton de registro
+          ),
+          SizedBox(height: 15),
+          _crearSwitch(),
+          SizedBox(height: 15),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 110),
+            child: Row(
+              children: [
+                _crearDropdown(), 
+              ],
+            ),
+          ),
+          SizedBox(height: 55),
+          _botonSalida(context) // Boton de registro
           ],
         ),
       ),
     );
   }
 
-  Widget _crearInput() {
+  Widget _crearHoras() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 25.0),
+      padding: EdgeInsets.symmetric(horizontal: 85.0),
       child: TextField(
         //autofocus: true,
         textCapitalization: TextCapitalization.sentences,
@@ -99,11 +136,11 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
             borderRadius: BorderRadius.circular(20.0),
             borderSide: BorderSide(color: Colors.deepOrange),
           ),
-          labelText: "Nombre",
+          labelText: "Hora Quedada",
           labelStyle: TextStyle(color: primaryColor),
-          helperText: "Nombre del hijo",
+          helperText: "Hora quedada exacta hora/min",
           prefixIcon: Icon(
-            Icons.account_circle,
+            Icons.timer,
             color: verdePOtentorro,
           ),
         ),
@@ -198,7 +235,7 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
   // Metodo que crea el wiget de fecha
   Widget _crearFecha(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 25.0),
+      padding: EdgeInsets.symmetric(horizontal: 68.0),
       child: TextField(
         controller: _controlador,
         enableInteractiveSelection: false,
@@ -206,8 +243,8 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          hintText: "Fecha de la Quedada",
-          labelText: "Fecha de la Quedada",
+          hintText: "Fecha Quedada",
+          labelText: "Fecha Quedada",
           suffixIcon: Icon(Icons.add_circle_outline,
           color: verdePOtentorro),
           prefixIcon: Icon(Icons.calendar_today_outlined,
@@ -239,20 +276,24 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
         child: Text('Crear Quedada',
             style: TextStyle(color: Colors.white, fontSize: 16)),
             textColor: Colors.white,
+        
       ),
     );
   }
 
   
   Widget _crearSwitch() {
-    return  SwitchListTile(
-      title: Text("Merienda"),
-      value: _bcheck, 
-      onChanged: (valor) {
-        setState(() {
-          _bcheck = valor;
-        });   
-      },
+    return  Container(
+      padding: EdgeInsets.symmetric(horizontal: 95.0),
+      child: SwitchListTile(
+        title: Text("Merienda"),
+        value: _bcheck, 
+        onChanged: (valor) {
+          setState(() {
+            _bcheck = valor;
+          });   
+        },
+      ),
     );
   }
 }
