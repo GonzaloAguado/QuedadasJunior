@@ -74,7 +74,15 @@ class _RegistroHijosState extends State<RegistroHijos> {
         appBar: AppBar(
           backgroundColor: verdePOtentorro,
           elevation: 0,
-          //title: Text('Añade a tus hijos/as'),
+          actions: <Widget>[
+            Container(
+              margin: EdgeInsets.only(right: 20.0),
+              child: CircleAvatar(
+                child: Text ("G"),
+                backgroundColor: Colors.white,
+              ),
+            ),
+          ],
         ),
         drawer: Menu_lateral(),
         body: ListView(

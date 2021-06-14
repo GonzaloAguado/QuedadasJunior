@@ -89,7 +89,7 @@ class Menu_lateral extends StatelessWidget {
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (_) => Mapa_Page()));
             },
-            // enabled: false,
+            enabled: false,
           ),
           Divider(),
           SizedBox(

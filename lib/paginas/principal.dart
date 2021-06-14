@@ -44,6 +44,15 @@ class _Menu_PrincipalState extends State<Menu_Principal> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text("Busqueda"),
+          actions: <Widget>[
+            Container(
+              margin: EdgeInsets.only(right: 20.0),
+              child: CircleAvatar(
+                child: Text ("G"),
+                backgroundColor: Colors.white,
+              ),
+            ),
+          ],
         ),
         drawer: Menu_lateral(),
         body: Stack(

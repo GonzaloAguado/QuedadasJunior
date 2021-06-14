@@ -27,10 +27,10 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
   bool _bcheck = false;
   // Opcion ya seleccionada
   String _opSelecc = "Futbol";
-  String _opSelecc2 = "Canicas";
+  String _opSelecc2 = "3";
   // Listas de seleccion para los dropdowns
   List <String> _gustos = ["Futbol","Ping Pong","Correr","VoleyBall","Pilla Pilla","Escondite"];
-  List <String> _hobbie = ["Canicas","Bakugan","Manga","Deporte"];
+  List <String> _hobbie = ["3","4","5","6","7","8","9","10"];
   TextEditingController _controlador = new TextEditingController();
 
   @override
@@ -41,84 +41,98 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
         appBar: AppBar(
           backgroundColor: verdePOtentorro,
           elevation: 0,
+          title: Text("Crear Quedadas"),
+          actions: <Widget>[
+            Container(
+              margin: EdgeInsets.only(right: 10.0),
+              child: CircleAvatar(
+                child: Text ("G"),
+                backgroundColor: Colors.white,
+              ),
+            ),
+          ],
         ),
         drawer: Menu_lateral(),
         body: ListView(
           padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
           children: <Widget>[
-          SizedBox(height: 25),
-          Container(
-          margin: EdgeInsets.symmetric(horizontal: 40),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.0),
-              color: verdePOtentorro,
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 10.0,
-                    spreadRadius: 2.0,
-                    offset: Offset(2.0,10.0)
-                )
-              ]
-            ),
-            child: Column(
-              children: <Widget>[
-                SizedBox(height: 5),
-                Text(
-                  'Quedada',
-                  textAlign: TextAlign.center,
-                  style:
-                    GoogleFonts.openSans(color: Colors.white, fontSize: 25),
-                ),
-                SizedBox(height: 10),
-                ],
+            SizedBox(height: 25),
+            Container(
+            margin: EdgeInsets.symmetric(horizontal: 40),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                color: verdePOtentorro,
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 10.0,
+                      spreadRadius: 2.0,
+                      offset: Offset(2.0,10.0)
+                  )
+                ]
               ),
-            ),
-          ),
-          SizedBox(height: 55),
-          _crearFecha(context),
-          SizedBox(height: 25),
-          _crearHoras(), 
-          SizedBox(height: 25),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 128.0),
-            child: MaterialButton(
-              elevation: 0,
-              minWidth: double.maxFinite,
-              height: 50,
-              onPressed: () async {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => Mapa_Page()));           
-              },
-              color: Colors.deepOrange,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Column(
                 children: <Widget>[
-                  Icon(FontAwesomeIcons.mapMarkerAlt),
-                  SizedBox(width: 10),
-                  Text('Maps',
-                    style: TextStyle(color: Colors.white, fontSize: 16)),
+                  SizedBox(height: 5),
+                  Text(
+                    'Quedada',
+                    textAlign: TextAlign.center,
+                    style:
+                      GoogleFonts.openSans(color: Colors.white, fontSize: 25),
+                  ),
+                  SizedBox(height: 10),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 55),
+            _crearFecha(context),
+            SizedBox(height: 25),
+            _crearHoras(), 
+            SizedBox(height: 25),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 128.0),
+              child: MaterialButton(
+                elevation: 0,
+                minWidth: double.maxFinite,
+                height: 50,
+                onPressed: () async {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => Mapa_Page()));           
+                },
+                color: Colors.deepOrange,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(FontAwesomeIcons.mapMarkerAlt),
+                    SizedBox(width: 10),
+                    Text('Maps',
+                      style: TextStyle(color: Colors.white, fontSize: 16)),
+                  ],
+                ),
+                textColor: Colors.white,
+              ),
+            ),
+            SizedBox(height: 15),
+            _crearSwitch(),
+            SizedBox(height: 15),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 45),
+              child: Row(
+                children: [
+                  _crearDropdown(),  // Primer Dropdown
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    child: _crearDropdown2()
+                  )  // Segundo Dropdown
                 ],
               ),
-              textColor: Colors.white,
             ),
-          ),
-          SizedBox(height: 15),
-          _crearSwitch(),
-          SizedBox(height: 15),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 110),
-            child: Row(
-              children: [
-                _crearDropdown(), 
-              ],
-            ),
-          ),
-          SizedBox(height: 55),
-          _botonSalida(context) // Boton de registro
+            SizedBox(height: 55),
+            _botonSalida(context) // Boton de registro
           ],
         ),
       ),
@@ -199,7 +213,7 @@ class _Crear_QuedadasState extends State<Crear_Quedadas> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
-        Icon(Icons.sports_esports_outlined,
+        Icon(Icons.child_care,
         color: verdePOtentorro,),
         SizedBox(width: 30.0),
         DropdownButton(

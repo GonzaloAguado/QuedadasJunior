@@ -25,6 +25,15 @@ class _Favoritos_PageState extends State<Favoritos_Page> {
           backgroundColor: verdePOtentorro,
           elevation: 0,
           title: Text("Favoritos"),
+          actions: <Widget>[
+            Container(
+              margin: EdgeInsets.only(right: 20.0),
+              child: CircleAvatar(
+                child: Text ("G"),
+                backgroundColor: Colors.white,
+              ),
+            ),
+          ],
         ),
         drawer: Menu_lateral(),
         body: Padding(

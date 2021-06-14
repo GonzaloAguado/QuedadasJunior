@@ -27,6 +27,15 @@ class _Mapa_PageState extends State<Mapa_Page> {
       appBar: AppBar(
         title: Text("Mapita bonito"),
         backgroundColor: verdePOtentorro,
+        actions: <Widget>[
+          Container(
+            margin: EdgeInsets.only(right: 20.0),
+            child: CircleAvatar(
+              child: Text ("G"),
+              backgroundColor: Colors.white,
+            ),
+          ),
+        ],
       ),
       body: GoogleMap(
         initialCameraPosition: CameraPosition(
